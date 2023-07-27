@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>739813208269-egbp54s8gqu0m2ronjo5igfi9crahdkd.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.739813208269-egbp54s8gqu0m2ronjo5igfi9crahdkd</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAhEYtH0vGPRQhdK6aZ1sBluZwB7_fEw4s</string>
+	<key>GCM_SENDER_ID</key>
+	<string>739813208269</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>Russell-Price.RecipeApp</string>
+	<key>PROJECT_ID</key>
+	<string>recipeapp-e65ec</string>
+	<key>STORAGE_BUCKET</key>
+	<string>recipeapp-e65ec.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:739813208269:ios:1b3e71f77b080ba2d6b984</string>
+</dict>
+</plist>
