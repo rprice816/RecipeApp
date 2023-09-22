@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeCard: View {
-    let recipe: RecipeEntry
+    let recipe: Recipe
 
 
     var body: some View {

@@ -119,7 +119,7 @@ struct NewRecipeView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button{
-                            let newRecipe = RecipeEntry(context: moc)
+                            let newRecipe = Recipe(context: moc)
                             newRecipe.id = UUID()
                             newRecipe.category = category
                             newRecipe.name = name

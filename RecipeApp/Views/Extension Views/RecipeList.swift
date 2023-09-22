@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RecipeList: View {
     @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.name)]) var recipes: FetchedResults<RecipeEntry>
+        SortDescriptor(\.name)]) var recipes: FetchedResults<Recipe>
     @Environment(\.managedObjectContext) var moc
 
     @State var text = ""

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecipeDetailsView: View {
-    let recipe: RecipeEntry
+    let recipe: Recipe
     @Environment(\.dismiss) var dismiss
     @State private var showingDeleteAlert = false
     @Environment(\.managedObjectContext) var moc
