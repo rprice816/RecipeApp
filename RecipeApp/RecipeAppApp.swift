@@ -7,7 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
-
+import CoreData
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -17,17 +17,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 @main 
 struct RecipeAppApp: App {
-  // register app delegate for Firebase setup
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-
-    @EnvironmentObject var recipeVM: RecipesViewModel
-    @StateObject var recipeViewModel = RecipesViewModel()
+    @StateObject private var dataController = DataController()
+    
   var body: some Scene {
-    WindowGroup {
-      NavigationView {
-        LoginScreen()
-              .environmentObject(recipeViewModel)
+      WindowGroup {
+          NavigationView{
+              LoginCheckView()
+                  .environmentObject(AuthViewModel())
+                  .environment(\.managedObjectContext, dataController.container.viewContext)
+          }
       }
-    }
   }
 }

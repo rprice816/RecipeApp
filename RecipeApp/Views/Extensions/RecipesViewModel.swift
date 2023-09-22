@@ -9,7 +9,7 @@ import Foundation
 
 class RecipesViewModel: ObservableObject {
     @Published private(set) var recipes: [Recipe] = []
-    
+
     init() {
         recipes = Recipe.all
     }
@@ -17,3 +17,6 @@ class RecipesViewModel: ObservableObject {
         recipes.append(recipe)
     }
 }
+
+
+

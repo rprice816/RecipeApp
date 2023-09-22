@@ -4,116 +4,148 @@
 //
 //  Created by russell price on 5/10/23.
 //
-
 import SwiftUI
 
 struct NewRecipeView: View {
+    @Environment(\.managedObjectContext) var moc
+
+  
     @State private var name: String = ""
-    @State private var selectedCategory: Category = Category.main
-    @State private var description: String = ""
+    @State private var category: String = ""
+    @State private var descriptionRecipe: String = ""
     @State private var ingredients: String = ""
     @State private var steps: String = ""
     @State private var image: String = ""
-    
-    @State private var navigateToRecipe = false
-    @EnvironmentObject var recipeVM: RecipesViewModel
+    @State private var review:String = ""
+    @State private var rating = 3
+
     @Environment(\.dismiss) private var dismiss
-    
+    let categories = [ "Main","Appetizer", "Side","Dessert","Snack", "Drink"]
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Gradient(colors: [.secondary, .teal]))
-                .ignoresSafeArea()
-            VStack{
-                RecipeEditorImage()
-                Form{
-                    Section(header: Text("Name:")){
-                        TextField("", text: $name)
-                    }
-                    .foregroundColor(.white.opacity(0.85))
-                    .listRowBackground((Color.white.opacity(0.2)))
-                    Section(header: Text("Category:")){
-                        Picker("Category:", selection: $selectedCategory) {
-                            ForEach(Category.allCases) { category in
-                                Text(category.rawValue)
-                                    .tag(category)
+            ZStack {
+                Rectangle()
+                    .fill(Gradient(colors: [.primaryColor2, .primaryColor1]))
+                    .ignoresSafeArea()
+                VStack{
+                        ZStack (alignment: .center){
+                            VStack{
+                                if let inputImage = inputImage {
+                                    Image(uiImage: inputImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width:300, height: 250)
+                                        .cornerRadius(10)
+                                    
+                                } else{
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width:50, height: 50, alignment: .center)
+                                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                        .frame(width: 300, height: 250)
+                                        .background(Color.secondaryColor1.opacity(0.2))
+                                        .cornerRadius(10)
+                                }
+                                Image(systemName:("plus.circle.fill"))
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .foregroundColor(.secondaryColor1.opacity(0.85))
+                                    .frame(width:35, height:7)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        showingImagePicker = true
+                                    }
+                                }
                             }
+                    Form{
+                        Section(header: Text("Name:")){
+                            TextField("", text: $name)
                         }
-                        .pickerStyle(.menu)
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                        .listRowBackground((Color.secondaryColor1.opacity(0.2)))
+                        Section(header: Text("Category:")){
+                            Picker("Category:", selection: $category) {
+                                Text("Category").tag("")
+                                ForEach(categories, id: \.self) {
+                                    Text($0)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                        }
+                        .accentColor(.secondaryColor1)
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                        .labelsHidden()
+                        .listRowBackground((Color.secondaryColor1.opacity(0.2)))
+                        Section(header: Text("Description:")){
+                            TextEditor( text: $descriptionRecipe)
+                        }
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                        .listRowBackground((Color.secondaryColor1.opacity(0.2)))
+                        Section(header: Text("Ingredients:")){
+                            TextEditor( text: $ingredients)
+                        }
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                        .listRowBackground((Color.secondaryColor1.opacity(0.2)))
+                        Section(header: Text("Steps:")){
+                            TextEditor( text: $steps)
+                        }
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                        .listRowBackground((Color.secondaryColor1.opacity(0.2)))
+                        Section {
+                            TextEditor(text: $review)
+                            RatingView(rating: $rating)
+                        } header: {
+                            Text("Write a review")
+                        }
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
+                        .listRowBackground((Color.secondaryColor1.opacity(0.2)))
                     }
-                    .accentColor(.white)
-                    .foregroundColor(.white.opacity(0.85))
-                    .labelsHidden()
-                    .listRowBackground((Color.white.opacity(0.2)))
-                    Section(header: Text("Description:")){
-                        TextEditor( text: $description)
-                    }
-                    .foregroundColor(.white.opacity(0.85))
-                    .listRowBackground((Color.white.opacity(0.2)))
-                    Section(header: Text("Ingredients:")){
-                        TextEditor( text: $ingredients)
-                    }
-                    .foregroundColor(.white.opacity(0.85))
-                    .listRowBackground((Color.white.opacity(0.2)))
-                    Section(header: Text("Steps:")){
-                        TextEditor( text: $steps)
-                    }
-                    .foregroundColor(.white.opacity(0.85))
-                    .listRowBackground((Color.white.opacity(0.2)))
+                    .scrollContentBackground(.hidden)
                 }
-                
-                .scrollContentBackground(.hidden)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button{
-                    dismiss()
-                } label: {
-                    Label("Cancel", systemImage: "xmark")
-                        .labelStyle(.iconOnly)
-                }
-                .foregroundColor(.red.opacity(0.8))
-            }
-            
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                NavigationLink(isActive: $navigateToRecipe) {
-                    HomeScreenView()
-                        .navigationBarBackButtonHidden(true)
-                } label: {
-                    Button{
-                        saveRecipe()
-                        navigateToRecipe = true
-                    } label: {
-                        Label("Done", systemImage: "checkmark")
-                            .labelStyle(.iconOnly)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button{
+                            dismiss()
+                        } label: {
+                            Label("Cancel", systemImage: "xmark")
+                                .labelStyle(.iconOnly)
+                        }
+                        .tint(.red.opacity(0.85))
                     }
                 }
-                .disabled(name.isEmpty)
-                .accentColor(.green)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button{
+                            let newRecipe = RecipeEntry(context: moc)
+                            newRecipe.id = UUID()
+                            newRecipe.category = category
+                            newRecipe.name = name
+                            newRecipe.descriptionRecipe = descriptionRecipe
+                            newRecipe.ingredients = ingredients
+                            newRecipe.steps = steps
+                            newRecipe.rating = Int16(rating)
+                            newRecipe.review = review
+                            
+                            try? moc.save()
+                            dismiss()
+                        } label: {
+                            Label("Done", systemImage: "checkmark")
+                                .labelStyle(.iconOnly)
+                        }
+                        .disabled(name.isEmpty)
+                        .tint(.green.opacity(0.85))
+                    }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("")
         .preferredColorScheme(.light)
+        .navigationBarBackButtonHidden(true)
     }
     }
 
 
-struct NewRecipeView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack{
-            NewRecipeView()
-                .environmentObject(RecipesViewModel())
-        }
-    }
-}
 
-extension NewRecipeView {
-    private func saveRecipe() {
-        let recipe = Recipe(name: name, image: "", description: description, ingredients: ingredients, directions: steps, category: selectedCategory.rawValue, url: "")
-        recipeVM.addRecipe(recipe: recipe)
-    }
-}

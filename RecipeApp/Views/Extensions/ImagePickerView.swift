@@ -101,5 +101,3 @@ struct EditorImagePicker: UIViewControllerRepresentable{
         //leave empty for now
     }
 }
- 
-

@@ -7,50 +7,54 @@
 
 import SwiftUI
 import Firebase
+
 struct HomeScreenView: View {
-    @State private var isSidebarOpened = false
-    @EnvironmentObject var recipeVM: RecipesViewModel
+    @Environment(\.managedObjectContext) var moc
+
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Gradient(colors: [.secondary, .teal]))
-                .ignoresSafeArea()
-            VStack{
-                Text("My Recipes")
-                    .font(.largeTitle)
-                    .fontWeight(.medium)
-                    .foregroundColor(.white.opacity(0.85))
-                RecipeList(recipes: recipeVM.recipes)
-            }
-            Sidebar(isSidebarVisible: $isSidebarOpened )
-        }
-        .toolbarBackground(
-            Color.secondary.opacity(0.4),
-            for: .navigationBar)
-        .foregroundColor(.white.opacity(0.85))
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing){
-                Button {
-                    isSidebarOpened.toggle()
-                } label: {
-                    Label("Toggle SideBar",
-                          systemImage: "slider.horizontal.3")
+            ZStack {
+                Rectangle()
+                    .fill(Gradient(colors: [.primaryColor2, .primaryColor1]))
+                    .ignoresSafeArea()
+                VStack{
+                    HStack{
+                        Text("")
+                            .padding(.trailing)
+                        Spacer()
+                        Text("My Recipes")
+                            .font(.largeTitle)
+                            .fontWeight(.medium)
+                            .foregroundColor(.secondaryColor1.opacity(0.85))
+                            .padding(.leading)
+                        Spacer()
+                        NavigationLink(destination: Sidebar()) {
+                            Label("", systemImage: "slider.horizontal.3")
+                                .font(.title2)
+                                .fontWeight(.medium)
+                                .foregroundColor(.secondaryColor1.opacity(0.8))
+                        }
+                    }
+                    RecipeList()
+                    NavigationLink(destination: NewRecipeView()) {
+                        Label("Add New Recipe", systemImage: "plus.circle.fill")
+                            .foregroundColor(.secondaryColor1.opacity(0.85))
+                            .font(.body)
+                            .fontWeight(.medium)
+                    }
+                    .padding()
                 }
-                .foregroundColor(.white.opacity(0.85))
-            }
         }
-        .preferredColorScheme(.light)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("")
-    }
-}
+             .preferredColorScheme(.light)
+             .navigationBarTitleDisplayMode(.inline)
+             .navigationTitle("")
+             .navigationBarBackButtonHidden(true)
+         }
+     }
 
 struct HomeScreenView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack{
             HomeScreenView()
-                .environmentObject(RecipesViewModel())
             }
         }
 }

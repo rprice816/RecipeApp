@@ -7,12 +7,12 @@
 
 import SwiftUI
 import FirebaseAuth
-
+import Firebase
 struct EmailLoginView: View {
     enum Field {
         case email, password
     }
-    @State private var path = NavigationPath()
+    @State private var isLoggedIn = false
     @State private var email:String = ""
     @State private var password: String = ""
     @State private var showingAlert = false
@@ -24,20 +24,26 @@ struct EmailLoginView: View {
         let passwordRegex = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])(?=.*[A-Z]).{6,}$")
         return passwordRegex.evaluate(with: password)
     }
-    
+
     var body: some View {
-        NavigationStack(path: $path){
+        NavigationStack{
             ZStack{
                 Rectangle()
-                    .fill(Gradient(colors: [.secondary, .teal]))
+                    .fill(Gradient(colors: [.primaryColor2, .primaryColor1]))
                     .ignoresSafeArea()
                 VStack{
+                    Image(systemName: "book")
+                        .resizable()
+                        .frame(width:150, height: 100, alignment: .center)
+                        .foregroundColor(.secondaryColor1.opacity(0.75))
+                        .padding()
                     Text("Login")
                         .font(.system(.largeTitle, weight: .medium))
                         .fontWeight(.heavy)
-                        .foregroundColor(.white.opacity(0.85))
+                        .foregroundColor(.secondaryColor1.opacity(0.85))
                     HStack{
                         Image(systemName: "envelope.fill")
+                            .foregroundColor(Color.primaryColor1)
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
                             .autocorrectionDisabled()
@@ -55,11 +61,12 @@ struct EmailLoginView: View {
                     }
                     .padding()
                     .frame(width: 300, height: 50)
-                    .background(Color.white.opacity(0.5))
+                    .background(Color.secondaryColor1.opacity(0.65))
                     .cornerRadius(10)
                     
                     HStack{
                         Image(systemName: "lock.fill")
+                            .foregroundColor(Color.primaryColor1)
                         SecureField("Password", text: $password)
                             .submitLabel(.done)
                             .focused($focusField, equals: .password)
@@ -74,7 +81,7 @@ struct EmailLoginView: View {
                     }
                     .padding()
                     .frame(width: 300, height: 50)
-                    .background(Color.white.opacity(0.5))
+                    .background(Color.secondaryColor1.opacity(0.65))
                     .cornerRadius(10)
                     .padding()
                     .padding()
@@ -89,39 +96,34 @@ struct EmailLoginView: View {
                             if let authResult = authResult {
                                 print(authResult.user.uid)
                                 userID = authResult.user.uid
-                                path.append("HomeScreenView")
+                                isLoggedIn = true
                             }
                         }
                     } label: {
                         Text("Login")
-                            .foregroundColor(.white)
+                            .foregroundColor(.primaryColor1)
                             .frame(width:225, height: 50)
-                            .background(Color.blue.opacity(0.9))
+                            .background(Color.secondaryColor1.opacity(0.85))
                             .cornerRadius(10)
                             .fontWeight(.semibold)
                     }
                     .alert(alertMessage, isPresented: $showingAlert) {
                         Button("OK", role: .cancel){}
                     }
-                    .navigationDestination(for: String.self) { view in
-                        if view == "HomeScreenView" {
-                            HomeScreenView()
-                        }
+                    .navigationDestination(isPresented: $isLoggedIn){
+                        HomeScreenView()
                     }
+                    NavigationLink("Don't Have an Account?", destination: CreateAccountView())
+                        .foregroundColor(.secondaryColor1)
+                        .padding()
                     Button{} label: {
                         Text("Forgot Password?")
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    .onAppear {
-                        if Auth.auth().currentUser != nil {
-                            print("Login Succcess")
-                            path.append("HomeScreenView")
-                        }
+                            .foregroundColor(.secondaryColor1)
                     }
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .preferredColorScheme(.light)
     }
 }

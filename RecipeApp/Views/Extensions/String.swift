@@ -12,7 +12,6 @@ extension String {
         return regex.firstMatch(in: self, range: NSRange(location: 0, length: count)) != nil
     }
 }
-class SearchObservableObject: ObservableObject {
-     var data: [Recipe] = []
-    @Published var searchResults: [Recipe] = []
-    }
+
+
+ 

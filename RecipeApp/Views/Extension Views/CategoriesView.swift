@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CategoriesView: View {
-    @EnvironmentObject var recipeVM: RecipesViewModel
     var body: some View {
         VStack{
             Text("Categories")

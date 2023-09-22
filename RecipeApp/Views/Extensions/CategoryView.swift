@@ -8,37 +8,39 @@
 import SwiftUI
 
 struct CategoryView: View {
-    var category: Category
-    @EnvironmentObject var recipeVM: RecipesViewModel
-    var recipes: [Recipe] {
-        return recipeVM.recipes.filter{ $0.category == category.rawValue}
-    }
+    let recipe: Recipe
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         ZStack{
             Rectangle()
                 .fill(Gradient(colors: [.secondary, .teal]))
                 .ignoresSafeArea()
             VStack{
-                Text("\(category.rawValue)s")
+                Text(recipe.category ?? "Category")
                     .font(.largeTitle)
                     .foregroundColor(.white.opacity(0.85))
                     .fontWeight(.medium)
                 ScrollView {
-                    RecipeList(recipes: recipes)
+                    RecipeList()
                 }
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button{
+                    dismiss()
+                } label: {
+                    Label("Cancel", systemImage: "arrow.uturn.backward.circle.fill")
+                        .labelStyle(.iconOnly)
+                }
+                .foregroundColor(.white.opacity(0.8))
+            }
+        }
+        .navigationBarBackButtonHidden(true)
             .preferredColorScheme(.light)
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-struct CategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack{
-            CategoryView(category: Category.main)
-                .environmentObject(RecipesViewModel())
-        }
-    }
-}
+
