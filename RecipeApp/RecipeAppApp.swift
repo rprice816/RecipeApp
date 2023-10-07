@@ -23,9 +23,9 @@ struct RecipeAppApp: App {
   var body: some Scene {
       WindowGroup {
           NavigationView{
-              LoginCheckView()
-                  .environmentObject(AuthViewModel())
+              EmailLoginView()
                   .environment(\.managedObjectContext, dataController.container.viewContext)
+                
           }
       }
   }

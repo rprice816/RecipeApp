@@ -21,11 +21,11 @@ struct RecipeCard: View {
                     .foregroundColor(.secondaryColor1.opacity(0.85))
             }
             .frame(width: 100, height: 100)
-            .background(Color.secondary.opacity(0.85))
+            .background(Color.secondary.opacity(0.8))
             .cornerRadius(10)
             VStack{
                 Text(recipe.name ?? "")
-                    .lineLimit(2)
+                    .lineLimit(1)
                     .foregroundColor(Color.secondaryColor1.opacity(0.85))
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.center)

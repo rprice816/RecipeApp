@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		244E81672AC347110058594F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E81662AC347110058594F /* AuthViewModel.swift */; };
+		244E816D2AC34E670058594F /* LoginCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244E816C2AC34E670058594F /* LoginCheckView.swift */; };
+		2456DA292AD1DA8A001A7B96 /* FetchedObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2456DA282AD1DA8A001A7B96 /* FetchedObjects.swift */; };
 		247CED1D2A79861C0003F0B2 /* RecipeData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 247CED1B2A79861C0003F0B2 /* RecipeData.xcdatamodeld */; };
 		248468082A03DED7005FA960 /* RecipeAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248468072A03DED7005FA960 /* RecipeAppApp.swift */; };
 		2484680C2A03DED8005FA960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2484680B2A03DED8005FA960 /* Assets.xcassets */; };
@@ -30,12 +33,13 @@
 		249AACC02AA0F7FE00E213FA /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AACBF2AA0F7FE00E213FA /* CategoryView.swift */; };
 		249AACC42AA10BA800E213FA /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249AACC32AA10BA800E213FA /* SearchBar.swift */; };
 		24B49EA92AB1F2D50051B443 /* DataController .swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B49EA82AB1F2D50051B443 /* DataController .swift */; };
-		24C0993E2AAB572200899EF4 /* LoginCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0993D2AAB572200899EF4 /* LoginCheckView.swift */; };
-		24C099402AAB588B00899EF4 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0993F2AAB588B00899EF4 /* AuthViewModel.swift */; };
 		24C099422AAB6F5500899EF4 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C099412AAB6F5500899EF4 /* AppColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		244E81662AC347110058594F /* AuthViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		244E816C2AC34E670058594F /* LoginCheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCheckView.swift; sourceTree = "<group>"; };
+		2456DA282AD1DA8A001A7B96 /* FetchedObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedObjects.swift; sourceTree = "<group>"; };
 		247CED1C2A79861C0003F0B2 /* RecipeData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeData.xcdatamodel; sourceTree = "<group>"; };
 		248468042A03DED7005FA960 /* RecipeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		248468072A03DED7005FA960 /* RecipeAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeAppApp.swift; sourceTree = "<group>"; };
@@ -59,8 +63,6 @@
 		249AACBF2AA0F7FE00E213FA /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		249AACC32AA10BA800E213FA /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		24B49EA82AB1F2D50051B443 /* DataController .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DataController .swift"; sourceTree = "<group>"; };
-		24C0993D2AAB572200899EF4 /* LoginCheckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheckView.swift; sourceTree = "<group>"; };
-		24C0993F2AAB588B00899EF4 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		24C099412AAB6F5500899EF4 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
 		24FF68832A1129AA00632B06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,10 +79,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		24319F7D2ACC593B00608A43 /* CategoryViews */ = {
+			isa = PBXGroup;
+			children = (
+				249AACBF2AA0F7FE00E213FA /* CategoryView.swift */,
+			);
+			path = CategoryViews;
+			sourceTree = "<group>";
+		};
 		247CED1A2A7986030003F0B2 /* Core Data  */ = {
 			isa = PBXGroup;
 			children = (
 				247CED1B2A79861C0003F0B2 /* RecipeData.xcdatamodeld */,
+				2456DA282AD1DA8A001A7B96 /* FetchedObjects.swift */,
 				24B49EA82AB1F2D50051B443 /* DataController .swift */,
 			);
 			path = "Core Data ";
@@ -130,6 +141,7 @@
 				24FF688A2A17042C00632B06 /* Log In */,
 				24FF688B2A17043B00632B06 /* Main Views */,
 				24FF688D2A17048F00632B06 /* Extension Views */,
+				24319F7D2ACC593B00608A43 /* CategoryViews */,
 				2484682C2A056CD2005FA960 /* Extensions */,
 			);
 			path = Views;
@@ -138,7 +150,7 @@
 		2484682C2A056CD2005FA960 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				24C0993F2AAB588B00899EF4 /* AuthViewModel.swift */,
+				244E81662AC347110058594F /* AuthViewModel.swift */,
 				249AACAF2A93BCA100E213FA /* ViewModel.swift */,
 				2484682F2A056CFD005FA960 /* String.swift */,
 				24959BDF2A10365800985D7D /* ImagePickerView.swift */,
@@ -150,7 +162,7 @@
 		24FF688A2A17042C00632B06 /* Log In */ = {
 			isa = PBXGroup;
 			children = (
-				24C0993D2AAB572200899EF4 /* LoginCheckView.swift */,
+				244E816C2AC34E670058594F /* LoginCheckView.swift */,
 				2484681F2A0553AB005FA960 /* EmailLoginView.swift */,
 				2484681B2A0436D6005FA960 /* CreateAccountView.swift */,
 			);
@@ -172,7 +184,6 @@
 			isa = PBXGroup;
 			children = (
 				248468432A0A94BD005FA960 /* FriendsView.swift */,
-				249AACBF2AA0F7FE00E213FA /* CategoryView.swift */,
 				249AACC32AA10BA800E213FA /* SearchBar.swift */,
 				248468452A0A94CF005FA960 /* SettingsView.swift */,
 				24959BD72A0E79B600985D7D /* RecipeList.swift */,
@@ -213,7 +224,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					248468032A03DED7005FA960 = {
 						CreatedOnToolsVersion = 14.3;
@@ -264,12 +275,13 @@
 				24959BD42A0DBF5C00985D7D /* RecipeCard.swift in Sources */,
 				24959BCA2A0AE1AD00985D7D /* Sidebar.swift in Sources */,
 				249AACB82A9F9DDE00E213FA /* RatingView.swift in Sources */,
+				244E816D2AC34E670058594F /* LoginCheckView.swift in Sources */,
 				24C099422AAB6F5500899EF4 /* AppColors.swift in Sources */,
-				24C0993E2AAB572200899EF4 /* LoginCheckView.swift in Sources */,
 				249AACC02AA0F7FE00E213FA /* CategoryView.swift in Sources */,
 				248468302A056CFD005FA960 /* String.swift in Sources */,
 				249AACB02A93BCA100E213FA /* ViewModel.swift in Sources */,
 				24959BE02A10365800985D7D /* ImagePickerView.swift in Sources */,
+				2456DA292AD1DA8A001A7B96 /* FetchedObjects.swift in Sources */,
 				2484681C2A0436D6005FA960 /* CreateAccountView.swift in Sources */,
 				248468442A0A94BD005FA960 /* FriendsView.swift in Sources */,
 				2484683E2A0969BC005FA960 /* RecipeDetailsView.swift in Sources */,
@@ -277,7 +289,7 @@
 				248468462A0A94CF005FA960 /* SettingsView.swift in Sources */,
 				24959BD02A0C264800985D7D /* NewRecipeView.swift in Sources */,
 				248468082A03DED7005FA960 /* RecipeAppApp.swift in Sources */,
-				24C099402AAB588B00899EF4 /* AuthViewModel.swift in Sources */,
+				244E81672AC347110058594F /* AuthViewModel.swift in Sources */,
 				249AACC42AA10BA800E213FA /* SearchBar.swift in Sources */,
 				248468222A0556A2005FA960 /* HomeScreenView.swift in Sources */,
 				248468202A0553AB005FA960 /* EmailLoginView.swift in Sources */,
@@ -323,6 +335,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -383,6 +396,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -406,6 +420,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeApp/Preview Content\"";
@@ -416,6 +431,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -436,6 +452,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RecipeApp/Preview Content\"";
@@ -446,6 +463,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

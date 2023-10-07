@@ -68,7 +68,7 @@ struct NewRecipeView: View {
                         .listRowBackground((Color.secondaryColor1.opacity(0.2)))
                         Section(header: Text("Category:")){
                             Picker("Category:", selection: $category) {
-                                Text("")
+                                Text("Category").tag("")
                                 ForEach(categories, id: \.self) {
                                     Text($0)
                                 }

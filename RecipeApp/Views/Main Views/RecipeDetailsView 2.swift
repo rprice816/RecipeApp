@@ -71,17 +71,6 @@ struct RecipeDetailsView: View {
                             .cornerRadius(10)
                             .foregroundColor(Color.secondaryColor1.opacity(0.8))
                             .fontWeight(.medium)
-                        Text("Review:")
-                            .bold()
-                            .foregroundColor(Color.secondaryColor1.opacity(0.85))
-                        Text(recipe.review ?? "")
-                            .padding()
-                            .frame(width: 300)
-                            .frame(alignment: .leading)
-                            .background(Color.secondaryColor1.opacity(0.2))
-                            .cornerRadius(10)
-                            .foregroundColor(Color.secondaryColor1.opacity(0.8))
-                            .fontWeight(.medium)
                         RatingView(rating: .constant(Int(recipe.rating)))
                             .font(.largeTitle)
                             .padding()
@@ -118,8 +107,8 @@ struct RecipeDetailsView: View {
                 showingDeleteAlert = true
             } label: {
                 Label("Delete this recipe", systemImage: "trash")
+                    .foregroundColor(.secondaryColor1.opacity(0.85))
             }
-            .tint(.secondaryColor1.opacity(0.85))
         }
     }
     func deleteRecipe() {

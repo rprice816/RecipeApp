@@ -107,11 +107,11 @@ struct EmailLoginView: View {
                             .cornerRadius(10)
                             .fontWeight(.semibold)
                     }
-                    .navigationDestination(isPresented: $isLoggedIn){
-                        HomeScreenView()
-                    }
                     .alert(alertMessage, isPresented: $showingAlert) {
                         Button("OK", role: .cancel){}
+                    }
+                    .navigationDestination(isPresented: $isLoggedIn){
+                        HomeScreenView()
                     }
                     NavigationLink("Don't Have an Account?", destination: CreateAccountView())
                         .foregroundColor(.secondaryColor1)

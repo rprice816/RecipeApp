@@ -9,7 +9,7 @@ import SwiftUI
 import Firebase
 struct Sidebar: View {
     @Environment(\.dismiss) private var dismiss
-
+    @EnvironmentObject private var authModel: AuthViewModel
     var body: some View {
             VStack{
             List{
@@ -25,7 +25,7 @@ struct Sidebar: View {
                 .listRowBackground((Color.secondaryColor1.opacity(0.2)))
                 .foregroundColor(.secondaryColor1.opacity(0.85))
                 .fontWeight(.medium)
-                NavigationLink(destination: CategoryView()) {
+                NavigationLink(destination: EmptyView()) {
                     Label("Categories", systemImage: "bookmark.fill")
                 }
                 .listRowBackground((Color.secondaryColor1.opacity(0.2)))
